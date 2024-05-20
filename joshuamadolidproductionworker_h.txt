@@ -1,0 +1,53 @@
+/*
+Joshua Madolid
+Engrg 120C
+Professor Mimi Rasky
+5/16/24
+Lab #10
+*/
+
+//Include our defined classes
+#ifndef PRODUCTIONWORKER_H
+#define PRODUCTIONWORKER_H
+#include <iostream>
+#include "Employee.h"
+
+//Other Libaries/Declarations
+using namespace std;
+
+//Define class production worker derived from class employee
+class ProductionWorker : public Employee
+{
+    private:
+        //Private variables include the amount of hours worked and hourly pay
+        int hoursWorked;
+        double hourlyPay;
+    public:
+        //Public variables are derived from the employee class
+
+        //Public constructor
+        ProductionWorker();
+        
+        //Custom constructor
+        ProductionWorker(string conName, int conEmployeeID, string conDepartment, string conPosition, int conHrsWorked, double conHrlyPay);
+
+        //Getter for hours
+        int getHours();
+
+        //Setter for hours
+        void setHours(int hours);
+
+        //Getter for rate
+        double getRate();
+
+        //Setter for rate
+        void setRate(double rate);
+
+        //Print function
+        void print();
+        
+        //Our own custom public method which calculates the gross pay
+        double calcGrossPay();
+};
+
+#endif

@@ -1,0 +1,46 @@
+/*
+Joshua Madolid
+Engrg 120C
+Professor Mimi Rasky
+5/16/24
+Lab #10
+*/
+
+//Include our defined classes
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
+#include <iostream>
+
+//Other Libaries/Declarations
+using namespace std;
+
+//Define class employee
+class Employee
+{
+    protected:
+        //Protected variable is EmployeeID
+        int employeeID;
+    public:
+        //Public variables are name, department, and position
+        string name;
+        string department;
+        string position;
+        //Public methods
+
+        //Getter
+        int getID();
+
+        //Setter
+        void setID(int numID);
+
+        //Print method
+        virtual void print();
+        
+        //Default constructor
+        Employee();
+
+        //Custom constructor
+        Employee(string conName, int conEmployeeID, string conDepartment, string conPosition);
+};
+
+#endif

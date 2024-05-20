@@ -1,0 +1,92 @@
+/*
+Joshua Madolid
+Engrg 120C
+Professor Mimi Rasky
+5/16/24
+Lab #10
+*/
+
+//Include our defined classes
+#include "ProductionWorker.h"
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+
+//Other Libaries/Declarations
+using namespace std;
+
+// Default constructor
+ProductionWorker::ProductionWorker():Employee()
+{
+    hoursWorked = 0;
+    hourlyPay = 0;
+}
+
+//Custom Constructor
+ProductionWorker::ProductionWorker(string conName, int conEmployeeID, string conDepartment, string conPosition, int conHrsWorked, double conHrlyPay):Employee(conName, conEmployeeID, conDepartment, conPosition)
+{
+   //Uses the dervied class to invoke the functions
+   hoursWorked = conHrsWorked;
+   hourlyPay = conHrlyPay;
+}
+
+//Getter for hours
+int ProductionWorker::getHours()
+{
+    return hoursWorked;
+}
+
+//Setter for hours
+void ProductionWorker::setHours(int hours)
+{
+    //VALIDATION CHECK, checks for negative numbers and below 80
+    if(hours + hoursWorked <= 80 && hours >= 0)
+    {
+        hoursWorked = hours;
+    }
+    //If not print out "Sorry, invalid hours." and set the hours worked equal to 0
+    else
+    {
+        hoursWorked = 0;
+        cout << "Sorry, invalid hours.\n"; 
+    }
+
+}
+
+//Getter for rate
+double ProductionWorker::getRate()
+{
+    return hourlyPay;
+}
+
+//Setter for rate
+void ProductionWorker::setRate(double rate)
+{
+    //VALIDATION CHECK, checks for negative numbers
+    if(rate >= 0)
+    {
+        hourlyPay = rate;
+    }
+    //If not, print our Sorry, invalid hourly pay, and set the hourly pay equal to 0
+    else
+    {
+        hourlyPay = 0;
+        cout << "Sorry, invalid hourly pay.\n"; 
+    }
+
+}
+
+//Print function
+void ProductionWorker::print()
+{
+    //Add ** to keep track of a production worker, used string concacenation
+    string temp = name + " **";
+    //For the print method, we print out the data in an organized manner, with format specifier
+    cout << left << setw(25) << setfill(' ') << name << setw(15) << employeeID << setw(22) << department << setw(21) << position << endl;
+}
+
+//Calculation of Gross Pay, which is the amount of hours worked times the hourly pay
+double ProductionWorker::calcGrossPay()
+{
+    return hoursWorked * hourlyPay;
+}

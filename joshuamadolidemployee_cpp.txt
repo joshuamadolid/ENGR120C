@@ -1,0 +1,69 @@
+/*
+Joshua Madolid
+Engrg 120C
+Professor Mimi Rasky
+5/16/24
+Lab #10
+*/
+
+//Libaries
+
+//Include our defined classes
+#include "Employee.h"
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+
+//Other Libaries/Declarations
+using namespace std;
+
+//Default constructor, ID is set 1, Rest are spaces/blank
+Employee::Employee()
+{
+    employeeID = 1;
+    name = "";
+    department = "";
+    position = "";
+} 
+
+//Custom constructor
+Employee::Employee(string conName, int conEmployeeID, string conDepartment, string conPosition)
+{
+    setID(conEmployeeID);
+    name = conName;
+    department = conDepartment;
+    position = conPosition;
+}
+
+//Getter for employee ID
+int Employee::getID()
+{
+    return employeeID;
+}
+
+//Setter for employee ID
+void Employee::setID(int numID)
+{
+    //Declare variables
+    int ctr = 0, digit, tempVal = numID;
+
+    //Use stripping digits to count our length of ID
+    while(tempVal > 0)
+    {
+        digit = tempVal % 10;
+        tempVal /= 10;
+        ctr++;
+    }
+
+    //If the length of the ID number is valid, set equal to the employee ID
+    if(ctr <= 5)
+        employeeID = numID;
+    //If not, print "Sorry, Invalid ID"
+    else 
+        cout << "Sorry, Invalid ID" << endl;
+}
+void Employee::print()
+{
+    //For the print method, we print out the data in an organized manner, with format specifier
+    cout << left << setw(25) << setfill(' ') << name << setw(15) << employeeID << setw(22) << department << setw(21) << position << endl;
+}

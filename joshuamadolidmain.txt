@@ -1,0 +1,103 @@
+/*
+Joshua Madolid
+Engrg 120C
+Professor Mimi Rasky
+5/16/24
+Lab #10
+*/
+
+//Libaries
+
+//Include our defined classes
+#include "Employee.h"
+#include "ProductionWorker.h"
+
+//Other Libaries/Declarations
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <cstdlib>
+#include <cstring>
+using namespace std;
+
+
+//Enter main
+int main()
+{
+    //Declare variables
+    int ID;
+    string name, position, department;
+    
+    // Declare instances of Employee 
+    Employee worker2;
+    Employee worker3;
+
+    //Create at least 2 ProductionWorker objects using the custom constructor.
+    ProductionWorker proWorker1("Jason Derulo", 00002, "Entertainment", "Dancer", 20, 5000.5);
+    ProductionWorker proWorker2("Bruno Mars", 00034, "Entertainment", "Singer", 30, 1000.5);  
+
+    /*The main() routine will prompt the user for a name, employee ID, position, and department for the
+    first Employee and then creates (declares) that Employee object using the appropriate custom
+    constructor*/
+
+    //1) Create first employee object with prompted data from user
+    cout << "Enter a name: ";
+    cin >> name;
+    cout << "Enter a ID: ";
+    cin >> ID;
+    cout << "Enter a positon: ";
+    cin >> position;
+    cout << "Enter a department: ";
+    cin >> department;
+
+    //2) With all the data, create the employee object named worker1
+    Employee worker1(name, ID, position, department);
+
+    //CREATE SECOND EMPLOYEE OBJECT named worker2
+
+    //1) Set name, position, department
+    
+    worker2.name = "Joshua Madolid";
+    worker2.position = "Manager";
+    worker2.department = "Hosting";
+
+    //2) Print out all the data, use cout
+    cout << "worker2.name: " << worker2.name << endl;
+    cout << "worker2.department: " << worker2.department << endl;
+    cout << "worker2.position: " << worker2.position << endl << endl;
+
+    //3)Use an invalid ID to print out "Invalid ID", use hint shown
+    worker2.setID(123456789);
+    cout << setw(5) << setfill('0') << worker2.getID() << endl << endl;
+
+    //4)Use a valid ID this time to print out the ID with trailing 0s
+    worker2.setID(45);
+    cout << setw(5) << setfill('0') << worker2.getID() << endl << endl;
+
+    //Set worker 3's name, department, and position
+    worker3.name = "Howard Stern";
+    worker3.department = "Dining";
+    worker3.position = "Manager";
+    
+    //Your main() program then invoke the all of the new methods created for the ProductionWorker class at least once for at least one of the new objects created
+    //Invoke all methods for production worker 1
+    cout << setprecision(2) << fixed;
+    cout << "pWorker1.getHours(): " << proWorker1.getHours() << endl;
+    cout << "pWorker1.getRate(): " << proWorker1.getRate() << endl;   
+    cout << "pWorker1.getcalcGrossPay(): " << proWorker1.calcGrossPay() << endl << endl;
+
+    //Invoke all methods for production worker 2
+    cout << "pWorker2.getHours(): " << proWorker2.getHours() << endl;
+    cout << "pWorker2.getRate(): " << proWorker2.getRate() << endl;   
+    cout << "pWorker2.getcalcGrossPay(): " << proWorker2.calcGrossPay() << endl << endl;
+
+    //Using a nice header, display all the objects in an organized format,left means adjust the field to the left
+    cout << left << setw(25) << setfill(' ') << "Name" << setw(15) << "Employee ID" << setw(22) << "Department" << setw(21) << "Position" << endl << endl;
+    worker1.print();
+    proWorker1.print();
+    worker2.print();
+    proWorker2.print();
+    worker3.print();
+
+    return 0;
+}
